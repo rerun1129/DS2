@@ -1,14 +1,17 @@
 package 자료구조2_2;
 
 public class Polynomial3 {
-    public char name; //다항식 이름
-    public int n; //항 개수
-    public Term3[] terms; //항들을 저장할 배열
+    private char name; //다항식 이름
+    private int n; //항 개수
+    private Term3[] terms; //항들을 저장할 배열
 
     public Polynomial3(char name){
         this.name = name;
         n = 0;
         terms = new Term3[100];
+    }
+    public char getName(){
+        return name;
     }
 
         public int calcPoly(int x) {
@@ -27,10 +30,10 @@ public class Polynomial3 {
         public void addTerm(int c, int e) {
             int index = findTerm(e);
             if(index != -1){
-                terms[index].coef += c;
+                terms[index].setCoef(terms[index].getCoef() + c);
             }else{
                 int i = n-1;
-                while (i >= 0 && terms[i].expo < e) {
+                while (i >= 0 && terms[i].getExpo() < e) {
                     terms[i+1] = terms[i];
                     i--;
                 }
@@ -38,9 +41,9 @@ public class Polynomial3 {
                 n++;
             }
         }
-        public int findTerm(int e) {
-            for(int i = 0; i< n && terms[i].expo >= e; i++)
-                if(terms[i].expo == e)
+        private int findTerm(int e) {
+            for(int i = 0; i< n && terms[i].getExpo() >= e; i++)
+                if(terms[i].getExpo() == e)
                     return i;
             return -1;
         }

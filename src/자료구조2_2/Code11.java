@@ -2,12 +2,10 @@ package 자료구조2_2;
 
 import java.util.Scanner;
 
-public class Code08 {
-
-    static Polynomial3[] polys = new Polynomial3[100];
-    static int n = 0;
-
-    public static void main(String[] args) {
+public class Code11 {
+    Polynomial3[] polys = new Polynomial3[100];
+    int n = 0;
+    private void processCommand(){
         Scanner kb = new Scanner(System.in);
 
         while (true){
@@ -51,10 +49,16 @@ public class Code08 {
         }
         kb.close();
     }
-    private static int find(char name) {
+
+    private int find(char name) {
         for(int i=0; i<n; i++)
             if(polys[i].getName() == name)
             return i;
         return -1;
+    }
+
+    public static void main(String[] args) {
+        Code11 app = new Code11();
+        app.processCommand();
     }
 }
